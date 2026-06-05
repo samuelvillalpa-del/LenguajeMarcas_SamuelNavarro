@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Ejercicio2</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+</head>
+<body>
+    <h2>Galeria de Imagenes</h2>
+    <input type="text" id="nuevaTarea" placeholder="URL de la imagen"> <!-- Esto crea la caja de texto para introducir la URL -->
+    <button onclick="agregarTarea()">Añadir Imagen</button> <!-- Esto crea el boton -->
+    <div id="imagenes"></div> <!-- Donde se almacena todo el ejercicio-->
+
+    <script>
+        function agregarTarea(){ // Define una funcion cuando el usuario pulsa Añadir
+            const url = document.getElementById("nuevaTarea").value; // Busca el input, el value obtiene el texto que se escribio
+            if (url === "") return; // Si el texto es nada, no haga nada
+
+            const contenedor = document.createElement("div"); // Se crea un div para guardar el boton y la imagen
+
+            const img = document.createElement("img"); // Se crea un elemento imagen
+            img.src = url // Esto pone la direcion de la imagen ejemplo "<img src="https://picsum.photos/200">"
+
+            const botonEliminar = document.createElement("button"); // Se crea el boton de eliminar 
+            botonEliminar.textContent = "Eliminar"; // Pone en el boton eliminar
+            botonEliminar.onclick = function() { // Cuando se pulsa el boton hace lo siguiente
+                contenedor.remove(); // Elimina el vid contenedor
+            }
+
+            contenedor.appendChild(img); // Mete la imagen dentro del div
+            contenedor.appendChild(botonEliminar); // Mete el boton dentro del div junto a la imagen
+
+            document.getElementById("imagenes").appendChild(contenedor); // Mete el div contenedor dentro del div con id imagenes
+            document.getElementById("nuevaTarea").value= ""; // Pone el input a cero
+        }
+    </script>
+    
+</body>
+</html>

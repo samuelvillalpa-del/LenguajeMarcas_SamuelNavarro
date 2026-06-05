@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Ejercicio1</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+</head>
+<body>
+    <h2>Lista de Tareas</h2>
+
+    
+    <input type="text" id="nuevaTarea" placeholder="Nueva tarea"> <!-- Esto crea la caja de texto --> 
+    <button onclick="agregarTarea()">Añador</button> <!-- Esto crea el boton -->
+    <ul id="listaTarea"></ul> <!-- Esto crea el ul de la lista -->
+
+    <script>
+        function agregarTarea(){ // Define una funcion cuando el usuario pulsa Añadir
+            const texto = document.getElementById("nuevaTarea").value; // Busca el input, el value obtiene el texto que se escribio
+            if (texto === "") return; // Si el texto es nada, no haga nada
+
+            const li = document.createElement("li"); // Crea un elemento de lista
+            li.textContent = texto + " "; // Añade el texto que se escribio al li
+
+            const botonEliminar = document.createElement("button"); // Se crea el boton de eliminar 
+            botonEliminar.textContent = "Eliminar"; // Pone en el boton eliminar
+            botonEliminar.onclick = function() { // Cuando se pulsa el boton hace lo siguiente
+                li.remove(); // Elimina el li
+            }
+            li.appendChild(botonEliminar) // Añade el boton a la lista
+
+            document.getElementById("listaTarea").appendChild(li); // Añade el li al ul
+
+            document.getElementById("nuevaTarea").value = ""; // Limpia el input
+        }
+
+
+    </script>
+</body>
+</html>

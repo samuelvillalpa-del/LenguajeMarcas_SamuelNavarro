@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Ejercicio3</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+</head>
+<body>
+    <h2>Calculadora</h2>
+    <input type="number" id="n1" placeholder="Numero 1">
+    <input type="number" id="n2" placeholder="Numero 2">
+    <select id="operaciones">
+        <option value="suma">+</option>
+        <option value="resta">-</option>
+        <option value="producto">*</option>
+        <option value="division">/</option>
+    </select>
+
+    <button type="button" id="boton">Calcular</button>
+
+    <div id="res"></div>
+
+    <script>
+        
+        document.getElementById("boton").addEventListener("click", function(){
+            let n1 = Number(document.getElementById("n1").value);
+            let n2 = Number(document.getElementById("n2").value);
+            let opcion = document.getElementById("operaciones").value;
+            let respuesta;
+
+            if (opcion === "suma") {
+                respuesta = n1 + n2;
+            } else if (opcion === "resta") {
+                respuesta = n1 - n2;
+            } else if (opcion === "producto") {
+                respuesta = n1 * n2;
+            } else if (opcion === "division") {
+                if (n2 === 0) {
+                    respuesta = "Error: division por 0";
+                } else {
+                    respuesta = n1 / n2;
+                }
+            }
+
+            let res = document.getElementById("res");
+            res.textContent = "Resultado "+respuesta;
+        })
+    </script>
+
+    
+</body>
+</html>
